@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Services Portal</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      color: #1b2b3a;
+    }
+
+    /* HEADER */
+    header {
+      background: #ffffff;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #087f8c;
+    }
+
+    .logo span {
+      color: #0b4f71;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #263746;
+      margin-left: 28px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #087f8c;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #075985, #0f9d9a);
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    /* THREE BLOCKS */
+    .services {
+      padding: 70px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #123b55;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 17px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .service-card {
+      min-height: 430px;
+      background: white;
+      border-radius: 22px;
+      padding: 45px 30px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.10);
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top: 7px solid #087f8c;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+    }
+
+    .icon {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: #e7f7f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      font-size: 32px;
+      margin-bottom: 18px;
+      color: #104c6b;
+    }
+
+    .service-card p {
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 13px 30px;
+      border-radius: 30px;
+      background: #087f8c;
+      color: white;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #064e68;
+      transform: scale(1.05);
+    }
+
+    /* SPECIAL CARDS */
+    .tpa {
+      border-top-color: #2563eb;
+    }
+
+    .tpa .icon {
+      background: #eaf1ff;
+    }
+
+    .mmsy {
+      border-top-color: #059669;
+    }
+
+    .mmsy .icon {
+      background: #e8faf3;
+    }
+
+    .ayushman {
+      border-top-color: #d97706;
+    }
+
+    .ayushman .icon {
+      background: #fff4df;
+    }
+
+    /* INFO SECTION */
+    .info {
+      background: #ffffff;
+      padding: 65px 7%;
+      text-align: center;
+    }
+
+    .info h2 {
+      font-size: 34px;
+      color: #123b55;
+      margin-bottom: 20px;
+    }
+
+    .info p {
+      max-width: 850px;
+      margin: auto;
+      color: #64748b;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #082f49;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p {
+      margin: 7px 0;
+      opacity: 0.9;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .service-card {
+        min-height: 390px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      Innocent Hearts Eye Center <span>Hospital</span>
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Healthcare Made Simple</h1>
+      <p>
+        Access information and support for TPA, Mukh Mantri Sehat Yojana
+        and Ayushman Bharat healthcare services.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+
+    <div class="section-title">
+      <h2>Our Healthcare Services</h2>
+      <p>Select a service below to continue</p>
+    </div>
+
+    <div class="service-grid">
+
+      <!-- TPA -->
+      <div class="service-card tpa">
+        <div class="icon">🏥</div>
+
+        <h3>TPA</h3>
+
+        <p>
+          Third Party Administrator services for health insurance
+          and cashless treatment assistance.
+        </p>
+
+        <a href="generaltest.html" class="btn">
+          Explore TPA
+        </a>
+      </div>
+
+
+      <!-- MMSY -->
+      <div class="service-card mmsy">
+        <div class="icon">❤️</div>
+
+        <h3>MMSY</h3>
+
+        <p>
+          Mukh Mantri Sehat Yojana information and assistance
+          for eligible beneficiaries.
+        </p>
+
+        <a href="mmsytest.html" class="btn">
+          Explore MMSY
+        </a>
+      </div>
+
+
+      <!-- AYUSHMAN BHARAT -->
+      <div class="service-card ayushman">
+        <div class="icon">🇮🇳</div>
+
+        <h3>Ayushman Bharat</h3>
+
+        <p>
+          Information and assistance related to Ayushman Bharat
+          health coverage and eligible healthcare services.
+        </p>
+
+        <a href="ayushmanbharattest.html" class="btn">
+          Explore Ayushman
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="info" id="about">
+    <h2>Quality Healthcare Support</h2>
+
+    <p>
+      Our healthcare portal is designed to provide patients and
+      beneficiaries with easy access to important information about
+      insurance, government healthcare schemes and cashless treatment
+      facilities.
+    </p>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <p><strong>Healthcare Services Portal</strong></p>
+    <p>TPA • MMSY • Ayushman Bharat</p>
+    <p>© 2026 All Rights Reserved Innocent Hearts Eye Center</p>
+  </footer>
+
+</body>
+</html>

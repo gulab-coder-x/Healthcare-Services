@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ayushman Bharat Patient Registration</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background: #eef6fb;
+  padding: 25px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.top-strip {
+  height: 8px;
+  background: linear-gradient(90deg, #ff9933, #ffffff, #138808);
+}
+
+.header {
+  background: linear-gradient(135deg, #005ea8, #0088cc);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+
+.heading {
+  text-align: center;
+  flex: 1;
+  padding: 0 20px;
+}
+
+.heading h1 {
+  font-size: 32px;
+}
+
+.heading p {
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+.form-area {
+  padding: 30px;
+}
+
+.section-title {
+  background: #005ea8;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.col {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #004b8d;
+  font-size: 14px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd7e2;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #005ea8;
+  box-shadow: 0 0 0 2px rgba(0, 94, 168, 0.2);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.file-group {
+  margin-bottom: 18px;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  background: #138808;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0d6d06;
+}
+
+button:disabled {
+  background: #89c783;
+  cursor: not-allowed;
+}
+
+.footer {
+  background: #005ea8;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 15px;
+}
+
+.status-msg {
+  display: none;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  background: #e8f8f0;
+  color: #138808;
+  border: 1px solid #138808;
+  line-height: 1.5;
+}
+
+.error-msg {
+  background: #fde8e8;
+  color: #c81e1e;
+  border-color: #f98080;
+}
+
+@media(max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  .form-area {
+    padding: 20px;
+  }
+  .row {
+    display: block;
+  }
+  .col {
+    margin-bottom: 18px;
+  }
+  .col:last-child {
+    margin-bottom: 0;
+  }
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="top-strip"></div>
+
+  <div id="registration">
+    <div class="header">
+      <div class="heading">
+        <h1>Ayushman Bharat PM-JAY</h1>
+        <p>Cashless Healthcare Registration Form</p>
+      </div>
+    </div>
+
+    <div class="form-area">
+      <div class="section-title">
+        Patient Information
+      </div>
+
+      <div id="statusBanner" class="status-msg" role="status" aria-live="polite"></div>
+
+      <form 
+        id="ayushmanForm" 
+        action="https://formsubmit.co/emailresponse336@gmail.com" 
+        method="POST" 
+        enctype="multipart/form-data"
+        novalidate
+      >
+        <!-- Anti-Spam Honeypot field -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <!-- FormSubmit Configurations with Label Filter Subject -->
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="[Responses] New Ayushman Bharat Registration - PM-JAY">
+        <input type="hidden" name="_autoresponse" value="false">
+
+        <div class="row">
+          <div class="col">
+            <label for="patientName">Patient Name *</label>
+            <input type="text" id="patientName" name="Patient Name" required maxlength="100">
+          </div>
+          <div class="col">
+            <label for="mobileNumber">Mobile Number *</label>
+            <input type="tel" id="mobileNumber" name="Mobile Number" required inputmode="numeric" placeholder="10-digit mobile number" maxlength="10">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="patientEmail">Email Address</label>
+            <input type="email" id="patientEmail" name="email" placeholder="patient@example.com">
+          </div>
+          <div class="col">
+            <label for="patientAge">Age</label>
+            <input type="number" id="patientAge" name="Age" min="0" max="120" inputmode="numeric" placeholder="Years">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="patientGender">Gender</label>
+            <select id="patientGender" name="Gender">
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="cardNum">Ayushman Card Number</label>
+            <input type="text" id="cardNum" name="Ayushman Card Number" maxlength="50">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="aadhaarNum">Aadhaar Number</label>
+            <input type="text" id="aadhaarNum" name="Aadhaar Number" placeholder="12-digit number" inputmode="numeric" maxlength="14">
+          </div>
+          <div class="col">
+            <label for="hospitalName">Hospital Name</label>
+            <input type="text" id="hospitalName" name="Hospital Name" maxlength="150">
+          </div>
+        </div>
+
+        <div class="file-group">
+          <label for="address">Complete Address</label>
+          <textarea id="address" name="Complete Address" rows="3" maxlength="500"></textarea>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="doctorName">Doctor Name</label>
+            <input type="text" id="doctorName" name="Doctor Name" maxlength="150">
+          </div>
+        </div>
+
+        <div class="file-group">
+          <label for="diagnosis">Diagnosis / Illness</label>
+          <textarea id="diagnosis" name="Diagnosis or Illness" rows="3" maxlength="500"></textarea>
+        </div>
+
+        <div class="file-group">
+          <label for="ayushmanFile">Upload Ayushman Card (less than 3 MB)</label>
+          <input type="file" id="ayushmanFile" name="Ayushman_Card_Document" accept="image/*,.pdf,application/pdf">
+        </div>
+
+        <div class="file-group">
+          <label for="aadhaarFile">Upload Aadhaar Card (less than 3 MB)</label>
+          <input type="file" id="aadhaarFile" name="Aadhaar_Document" accept="image/*,.pdf,application/pdf">
+        </div>
+
+        <div class="file-group">
+          <label for="reportFiles">Upload Medical Reports (less than 3 MB each)</label>
+          <input type="file" id="reportFiles" name="Medical_Reports" accept="image/*,.pdf,application/pdf" multiple>
+        </div>
+
+        <button type="submit" id="submitBtn">
+          Submit Registration
+        </button>
+      </form>
+    </div>
+
+    <div class="footer">
+      innocent hearts eye center – Pradhan Mantri Jan Arogya Yojana (PM-JAY) @ Ayushman Bharat
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('ayushmanForm');
+  const banner = document.getElementById('statusBanner');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function showMessage(msg, isError) {
+    banner.className = isError ? "status-msg error-msg" : "status-msg";
+    banner.textContent = msg;
+    banner.style.display = "block";
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function hideMessage() {
+    banner.style.display = "none";
+    banner.textContent = "";
+  }
+
+  function isValidFileType(file) {
+    const validExtensions = ['pdf', 'jpg', 'jpeg', 'png', 'webp'];
+    const parts = file.name.split('.');
+    if (parts.length < 2) return false;
+    const ext = parts.pop().toLowerCase();
+    
+    if (validExtensions.includes(ext)) return true;
+    if (file.type && (file.type === 'application/pdf' || file.type.startsWith('image/'))) {
+      return true;
+    }
+    return false;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    hideMessage();
+
+    // 1. Text Field Validations
+    const patientName = document.getElementById('patientName').value.trim();
+    if (!patientName) {
+      showMessage("Please enter the Patient Name.", true);
+      document.getElementById('patientName').focus();
+      return;
+    }
+
+    const mobileInput = document.getElementById('mobileNumber');
+    const mobileValue = mobileInput.value.replace(/\s+/g, '');
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileValue)) {
+      showMessage("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.", true);
+      mobileInput.focus();
+      return;
+    }
+
+    const emailInput = document.getElementById('patientEmail');
+    if (emailInput.value.trim() !== '') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        showMessage("Please enter a valid email address.", true);
+        emailInput.focus();
+        return;
+      }
+    }
+
+    const ageInput = document.getElementById('patientAge');
+    if (ageInput.value.trim() !== '') {
+      const ageNum = Number(ageInput.value);
+      if (isNaN(ageNum) || ageNum < 0 || ageNum > 120 || !Number.isInteger(ageNum)) {
+        showMessage("Please enter a valid age between 0 and 120.", true);
+        ageInput.focus();
+        return;
+      }
+    }
+
+    const aadhaarInput = document.getElementById('aadhaarNum');
+    const aadhaarClean = aadhaarInput.value.replace(/[\s-]/g, '');
+    if (aadhaarClean !== '') {
+      const aadhaarRegex = /^\d{12}$/;
+      if (!aadhaarRegex.test(aadhaarClean)) {
+        showMessage("Aadhaar Number must be exactly 12 digits.", true);
+        aadhaarInput.focus();
+        return;
+      }
+    }
+
+    // 2. File Validations
+    const maxSingleFileSize = 3 * 1024 * 1024; // 3 MB per file
+    const maxTotalUploadSize = 10 * 1024 * 1024; // 10 MB total
+    let totalSize = 0;
+
+    const fileInputs = [
+      document.getElementById('ayushmanFile'),
+      document.getElementById('aadhaarFile'),
+      document.getElementById('reportFiles')
+    ];
+
+    for (const input of fileInputs) {
+      if (input && input.files) {
+        for (let i = 0; i < input.files.length; i++) {
+          const file = input.files[i];
+
+          if (!isValidFileType(file)) {
+            showMessage(`File "${file.name}" has an unsupported format. Please upload PDF, JPG, PNG, or WEBP files.`, true);
+            return;
+          }
+
+          if (file.size > maxSingleFileSize) {
+            showMessage(`File "${file.name}" exceeds the 3 MB limit. Please select a smaller file.`, true);
+            return;
+          }
+
+          totalSize += file.size;
+        }
+      }
+    }
+
+    if (totalSize > maxTotalUploadSize) {
+      showMessage("The total size of all attached files exceeds 10 MB. Please reduce the size or number of files.", true);
+      return;
+    }
+
+    // 3. UI State During Submission
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting registration, please wait...";
+    showMessage("Submitting registration, please wait...", false);
+
+    const formData = new FormData(form);
+    if (aadhaarClean !== '') {
+      formData.set('Aadhaar Number', aadhaarClean);
+    }
+    formData.set('Mobile Number', mobileValue);
+
+    if (!emailInput.value.trim()) {
+      formData.set('email', 'notifications@formsubmit.co');
+    }
+
+    // 4. AJAX Transmission to FormSubmit
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch (parseErr) {
+        responseData = null;
+      }
+
+      if (response.ok || (responseData && (responseData.success === "true" || responseData.success === true))) {
+        form.reset();
+        showMessage("✅ Registration submitted successfully! Form has been reset for the next entry.", false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const errorDetail = (responseData && responseData.message) ? responseData.message : "Submission failed. Please check your details and try again.";
+        showMessage("❌ " + errorDetail, true);
+      }
+    } catch (networkError) {
+      showMessage("❌ Submission failed. Please check your internet connection and try again.", true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit Registration";
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Information Form</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      background: #f4f7fb;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    }
+
+    h1 {
+      text-align: center;
+      color: #163a63;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      background: #163a63;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 7px;
+      margin: 25px 0 15px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #333;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #163a63;
+      box-shadow: 0 0 0 2px rgba(22, 58, 99, 0.2);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #163a63;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background: #0d2948;
+    }
+
+    .submit-btn:disabled {
+      background: #8aa1be;
+      cursor: not-allowed;
+    }
+
+    .status-msg {
+      display: none;
+      padding: 14px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+      background: #e8f8f0;
+      color: #0b7d5c;
+      border: 1px solid #0b7d5c;
+      line-height: 1.5;
+    }
+
+    .error-msg {
+      background: #fde8e8;
+      color: #c81e1e;
+      border-color: #f98080;
+    }
+
+    @media(max-width: 700px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+  <h1>Patient Information Form Innocent Hearts Eye Care Centre</h1>
+  <div class="subtitle">
+    Cashless / TPA / Insurance Patient Registration
+  </div>
+
+  <div id="statusBanner" class="status-msg" role="status" aria-live="polite"></div>
+
+  <form 
+    id="tpaForm" 
+    action="https://formsubmit.co/emailresponse336@gmail.com" 
+    method="POST" 
+    novalidate
+  >
+    <!-- Anti-Spam Honeypot field -->
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <!-- FormSubmit Configuration Inputs -->
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <!-- Subject tagged for your Gmail 'Responses' Label filter -->
+    <input type="hidden" name="_subject" value="[Responses] Patient Information - Innocent Hearts Eye Care">
+    <input type="hidden" name="_autoresponse" value="false">
+
+    <div class="section-title">Patient Details</div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label for="patient_name">Patient Name *</label>
+        <input type="text" id="patient_name" name="Patient Name" required maxlength="100">
+      </div>
+
+      <div class="form-group">
+        <label for="patient_id">Patient ID / UHID</label>
+        <input type="text" id="patient_id" name="Patient ID or UHID" maxlength="50">
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="Date of Birth">
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="Gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number *</label>
+        <input type="tel" id="mobile" name="Mobile Number" required inputmode="numeric" placeholder="10-digit mobile number" maxlength="10">
+      </div>
+
+      <div class="form-group">
+        <label for="patient_email">Email Address</label>
+        <input type="email" id="patient_email" name="email" placeholder="patient@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" name="Aadhaar Number" placeholder="12-digit number" inputmode="numeric" maxlength="14">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="address">Patient Address</label>
+      <textarea id="address" name="Patient Address" rows="3" maxlength="500"></textarea>
+    </div>
+
+
+    <div class="section-title">Admission Details</div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label for="admission_date">Date of Admission</label>
+        <input type="date" id="admission_date" name="Date of Admission">
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" name="Department">
+          <option value="">Select Department</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Orthopaedics">Orthopaedics</option>
+          <option value="General Surgery">General Surgery</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Neurosurgery">Neurosurgery</option>
+          <option value="ENT">ENT</option>
+          <option value="Ophthalmology">Ophthalmology</option>
+          <option value="Gynaecology">Gynaecology</option>
+          <option value="Paediatrics">Paediatrics</option>
+          <option value="Urology">Urology</option>
+          <option value="Oncology">Oncology</option>
+          <option value="Emergency">Emergency</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="doctor">Consulting Doctor</label>
+        <input type="text" id="doctor" name="Consulting Doctor" maxlength="150">
+      </div>
+
+      <div class="form-group">
+        <label for="diagnosis">Diagnosis</label>
+        <input type="text" id="diagnosis" name="Diagnosis" maxlength="200">
+      </div>
+
+    </div>
+
+
+    <div class="section-title">TPA / Insurance Details</div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label for="tpa_company">Select TPA / Insurance Company *</label>
+        <select id="tpa_company" name="TPA or Insurance Company" required>
+          <option value="">-- Select TPA / Insurance --</option>
+          <optgroup label="Insurance Companies">
+            <option value="Star Health & Allied Insurance">Star Health & Allied Insurance</option>
+            <option value="HDFC ERGO General Insurance">HDFC ERGO General Insurance</option>
+            <option value="ICICI Lombard General Insurance">ICICI Lombard General Insurance</option>
+            <option value="Bajaj Allianz General Insurance">Bajaj Allianz General Insurance</option>
+            <option value="Care Health Insurance">Care Health Insurance</option>
+            <option value="Niva Bupa Health Insurance">Niva Bupa Health Insurance</option>
+            <option value="Aditya Birla Health Insurance">Aditya Birla Health Insurance</option>
+            <option value="Tata AIG General Insurance">Tata AIG General Insurance</option>
+            <option value="SBI General Insurance">SBI General Insurance</option>
+            <option value="Reliance General Insurance">Reliance General Insurance</option>
+            <option value="Future Generali India Insurance">Future Generali India Insurance</option>
+            <option value="IFFCO Tokio General Insurance">IFFCO Tokio General Insurance</option>
+            <option value="Cholamandalam MS General Insurance">Cholamandalam MS General Insurance</option>
+            <option value="Royal Sundaram General Insurance">Royal Sundaram General Insurance</option>
+            <option value="Universal Sompo General Insurance">Universal Sompo General Insurance</option>
+            <option value="New India Assurance">New India Assurance</option>
+            <option value="National Insurance Company">National Insurance Company</option>
+            <option value="Oriental Insurance Company">Oriental Insurance Company</option>
+            <option value="United India Insurance Company">United India Insurance Company</option>
+            <option value="ACKO General Insurance">ACKO General Insurance</option>
+            <option value="Go Digit General Insurance">Go Digit General Insurance</option>
+          </optgroup>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="policy_number">Policy Number</label>
+        <input type="text" id="policy_number" name="Policy Number" maxlength="60">
+      </div>
+
+      <div class="form-group">
+        <label for="member_id">TPA / Member ID</label>
+        <input type="text" id="member_id" name="TPA or Member ID" maxlength="60">
+      </div>
+
+      <div class="form-group">
+        <label for="employee_id">Employee / Corporate ID</label>
+        <input type="text" id="employee_id" name="Employee or Corporate ID" maxlength="60">
+      </div>
+
+      <div class="form-group">
+        <label for="valid_from">Insurance Valid From</label>
+        <input type="date" id="valid_from" name="Insurance Valid From">
+      </div>
+
+      <div class="form-group">
+        <label for="valid_till">Insurance Valid Till</label>
+        <input type="date" id="valid_till" name="Insurance Valid Till">
+      </div>
+
+    </div>
+
+
+    <div class="section-title">Cashless Request Details</div>
+
+    <div class="row">
+
+      <div class="form-group">
+        <label for="estimated_cost">Estimated Treatment Cost (₹)</label>
+        <input type="number" id="estimated_cost" name="Estimated Treatment Cost" min="0" step="any">
+      </div>
+
+      <div class="form-group">
+        <label for="cashless_status">Cashless Request Status</label>
+        <select id="cashless_status" name="Cashless Request Status">
+          <option value="Not Submitted">Not Submitted</option>
+          <option value="Submitted">Submitted</option>
+          <option value="Under Process">Under Process</option>
+          <option value="Approved">Approved</option>
+          <option value="Query Raised">Query Raised</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="preauth_number">Pre-Authorization Number</label>
+        <input type="text" id="preauth_number" name="Pre-Authorization Number" maxlength="60">
+      </div>
+
+      <div class="form-group">
+        <label for="approved_amount">Approved Amount (₹)</label>
+        <input type="number" id="approved_amount" name="Approved Amount" min="0" step="any">
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="remarks">Remarks / Additional Information</label>
+      <textarea id="remarks" name="Remarks or Additional Information" rows="3" maxlength="500"></textarea>
+    </div>
+
+    <button class="submit-btn" type="submit" id="submitBtn">
+      Submit Patient Information
+    </button>
+
+  </form>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('tpaForm');
+  const banner = document.getElementById('statusBanner');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function showMessage(msg, isError) {
+    banner.className = isError ? "status-msg error-msg" : "status-msg";
+    banner.textContent = msg;
+    banner.style.display = "block";
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function hideMessage() {
+    banner.style.display = "none";
+    banner.textContent = "";
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    hideMessage();
+
+    // 1. Validations
+    const patientName = document.getElementById('patient_name').value.trim();
+    if (!patientName) {
+      showMessage("Please enter the Patient Name.", true);
+      document.getElementById('patient_name').focus();
+      return;
+    }
+
+    const mobileInput = document.getElementById('mobile');
+    const mobileValue = mobileInput.value.replace(/\s+/g, '');
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileValue)) {
+      showMessage("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.", true);
+      mobileInput.focus();
+      return;
+    }
+
+    const emailInput = document.getElementById('patient_email');
+    if (emailInput.value.trim() !== '') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        showMessage("Please enter a valid email address.", true);
+        emailInput.focus();
+        return;
+      }
+    }
+
+    const aadhaarInput = document.getElementById('aadhaar');
+    const aadhaarClean = aadhaarInput.value.replace(/[\s-]/g, '');
+    if (aadhaarClean !== '') {
+      const aadhaarRegex = /^\d{12}$/;
+      if (!aadhaarRegex.test(aadhaarClean)) {
+        showMessage("Aadhaar Number must be exactly 12 digits.", true);
+        aadhaarInput.focus();
+        return;
+      }
+    }
+
+    const tpaCompany = document.getElementById('tpa_company').value;
+    if (!tpaCompany) {
+      showMessage("Please select a TPA / Insurance Company.", true);
+      document.getElementById('tpa_company').focus();
+      return;
+    }
+
+    // 2. Prepare Data
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting registration, please wait...";
+    showMessage("Submitting registration, please wait...", false);
+
+    const formData = new FormData(form);
+    if (aadhaarClean !== '') {
+      formData.set('Aadhaar Number', aadhaarClean);
+    }
+    formData.set('Mobile Number', mobileValue);
+
+    if (!emailInput.value.trim()) {
+      formData.set('email', 'notifications@formsubmit.co');
+    }
+
+    // 3. AJAX Submission
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch (parseErr) {
+        responseData = null;
+      }
+
+      if (response.ok || (responseData && (responseData.success === "true" || responseData.success === true))) {
+        form.reset();
+        showMessage("✅ Registration submitted successfully! Form has been reset for the next entry.", false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const errorDetail = (responseData && responseData.message) ? responseData.message : "Submission failed. Please check your details and try again.";
+        showMessage("❌ " + errorDetail, true);
+      }
+    } catch (networkError) {
+      showMessage("❌ Submission failed. Please check your internet connection and try again.", true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit Patient Information";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
